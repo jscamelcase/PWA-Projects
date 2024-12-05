@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Family Shop</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Google Font Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--Splash Screen (disappears after loading)-->
+    <div id="splash">
+      <h1>The Family Shop</h1>
+      <h2>Never Double Buy Again</h2>
+      <img
+        id="app-icon-splash"
+        src="./images/groceries-bag.svg"
+        alt="a bag of groceries"
+      />
+    </div>
+    <!--Header Stays Fixed to the Top of the Page -->
+    <header>
+      <div class="header-section">
+        <img
+          id="header-logo"
+          src="./images/groceries-bag.svg"
+          alt="bag with groceries"
+        />
+        <h2>The Family Shop</h2>
+      </div>
+    </header>
+    <!--The Various Application Screens-->
+    <div id="dynamic-content">
+      <!-- because these elements are hidden when not displayed, we add aria-hidden="true", when they are hidden. The hidden attribute keeps the element in the DOM, but removes it from
+      document flow, which is different than display: none, that
+      removes it from the document flow, we attach the role="main" to each screen, because we are dynamically rendering the main depending on what screen is picked, rather than having a single static main  -->
+      <div
+        id="home"
+        class="screen"
+        role="main"
+        tabindex="-1"
+        aria-hidden="true"
+        hidden
+      >
+        <h2>Add a Shopping Item</h2>
+
+        <form id="new-item-submit" class="input-container" action="#">
+          <div class="input-item-container">
+            <label class="input-label" for="shopping-item">Item</label>
+            <input
+              type="text"
+              placeholder="Enter an item"
+              required
+              class="inpt-box"
+            />
+          </div>
+          <div class="input-item-container">
+            <label class="input-label" for="quantity">Quantity</label>
+            <input
+              id="quantity"
+              class="inpt-box"
+              type="number"
+              min="1"
+              placeholder="Enter quantity"
+              required
+            />
+          </div>
+          <div class="input-item-container">
+            <label class="input-label" for="supermarket-selection"
+              >Select Store</label
+            >
+            <select id="supermarket-selection" required>
+              <option value="" disabled selected>Select a store</option>
+              <option value="Sainsbury">Sainsbury</option>
+              <option value="Waitrose">Waitrose</option>
+              <option value="Morrisons">Morrisons</option>
+              <option value="M&S">Marks & Spencers</option>
+              <option value="Yildiz">Yildiz</option>
+              <option value="Wholefoods">Wholefoods</option>
+            </select>
+          </div>
+          <div class="input-btn-container">
+            <button id="add-item">Add Item</button>
+          </div>
+        </form>
+      </div>
+      <div
+        id="stores"
+        class="screen"
+        role="main"
+        tabindex="-1"
+        aria-hidden="true"
+        hidden
+      >
+        <h1>Stores Screen</h1>
+      </div>
+      <div
+        id="notes"
+        class="screen"
+        role="main"
+        tabindex="-1"
+        aria-hidden="true"
+        hidden
+      >
+        <h1>Notes Screen</h1>
+      </div>
+      <div
+        id="settings"
+        class="screen"
+        role="main"
+        tabindex="-1"
+        aria-hidden="true"
+        hidden
+      >
+        <h1>Settings Screen</h1>
+      </div>
+    </div>
+    <!-- Application Navigaton Bar-->
+    <nav class="nav-bar" aria-label="Main Navigation">
+      <ul>
+        <li>
+          <button data-target="home" class="nav-btns" aria-label="Go to Home">
+            <img
+              src="./images/icons/house-solid.svg"
+              alt="a house"
+              class="nav-icons"
+            />Home
+          </button>
+        </li>
+        <li>
+          <button
+            data-target="stores"
+            class="nav-btns"
+            aria-label="Go to Locations"
+          >
+            <img
+              src="./images/icons/location-pin-solid.svg"
+              alt="a location pin"
+              class="nav-icons"
+            />Stores
+          </button>
+        </li>
+        <li>
+          <button data-target="notes" class="nav-btns" aria-label="Go to Notes">
+            <img
+              src="./images/icons/comment-solid.svg"
+              alt="a comment cloud"
+              class="nav-icons"
+            />Notes
+          </button>
+        </li>
+        <li>
+          <button
+            data-target="settings"
+            class="nav-btns"
+            aria-label="Go to Settings"
+          >
+            <img
+              src="./images/icons/gear-solid.svg"
+              alt="a gear"
+              class="nav-icons"
+            />Settings
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <!-- Centralized Live Region for Announcements -->
+    <div
+      id="live-region"
+      aria-live="polite"
+      aria-atomic="true"
+      class="visually-hidden"
+    ></div>
+    <script src="script.js"></script>
+  </body>
+</html>
